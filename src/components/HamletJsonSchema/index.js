@@ -3,6 +3,21 @@
 */
 import axios from "axios";
 
+const schema = {
+    basePath: 'https://hamlet.io/schema',
+    reference: {
+        data: `blueprint/reference`,
+    },
+    component: {
+        data: `blueprint/component`,
+    }
+};
+
+const getHamletJsonSchemaData = ({type, version}) => {
+    let path = schema[type].data;
+    return axios.get(`${schema.basePath}/${version}/${path}.json`);
+}
+
 const filterObjects = ["deployment-units", "instances"];
 const filterAttributerObjects = [
   "DeploymentUnits",
@@ -10,27 +25,9 @@ const filterAttributerObjects = [
   "additionalProperties",
 ];
 
-const getHamletJsonSchema = ({type, version}) => {
-    let schemaBaseUrl = 'https://hamlet.io/schema';
-    let path = '';
-    switch (type) {
-      case "component":
-        path = "blueprint/component";
-        break;
-      case "blueprint":
-        path = "blueprint";
-        break;
-      default:
-
-        break;
-    }
-    
-    return axios.get(`${schemaBaseUrl}/${version}/${path}.json`);
-}
-
 const getAsyncComponents = () => {
   let components = [];
-  return getHamletJsonSchema({ type: "component", version: "latest"}).then((response) => {
+  return getHamletJsonSchemaData({ type: "component", version: "latest"}).then((response) => {
     Object.entries(response.data.definitions).map((definition) => {
       let [name, value] = definition;
       let requiresList = value.required || [];
@@ -265,10 +262,9 @@ const getComponentExampleCodeblock = (schema) => {
 
 
 export {
-  getHamletJsonSchema,
   getAsyncComponents,
   getAttributeStructure,
   getComponentStructure,
   getComponentExampleCodeblock,
 };
-export default getHamletJsonSchema;
+export default getHamletJsonSchemaData;

@@ -2,135 +2,159 @@ module.exports = {
   docs: [
     {
       type: 'doc',
-      id: 'index',
+      id: 'hello/welcome',
     },
+    'hello/hamlet',
     {
       type: 'category',
-      label: 'Getting Started',
+      label: 'Foundations',
       items: [
-        'getting-started/overview',
-        'getting-started/getting-started-01',
-        'getting-started/getting-started-02',
-        'getting-started/getting-started-03',
-        'getting-started/getting-started-04',
-        'getting-started/getting-started-05',
+        'foundations/anatomy',
+        'foundations/index',
+        'foundations/inputsources',
+        'foundations/outputtypes',
+        'foundations/links',
+        'foundations/terminology',
       ]
     },
     {
       type: 'category',
-      label: 'Tutorials',
+      label: 'Contribute',
       items: [
-        'tutorials/overview',
         {
           type: 'category',
-          label: 'Create',
+          label: 'Setup',
+          items: [
+            'contribute/setup/workspace',
+            'contribute/setup/devcontainer',
+            'contribute/setup/source',
+            'contribute/setup/pulls',
+            'contribute/setup/repository-index',
+          ]
+        },
+        {
+          type: 'category',
+          label: 'Structure',
           items: [
             {
               type: 'category',
-              label: 'hello hamlet!',
+              label: 'Engine',
               items: [
-                'tutorials/create/multi/hello-hamlet',
+                'contribute/structure/engine/deploymentlevels',
+                'contribute/structure/engine/fragments',
+                'contribute/structure/engine/legacy',
+                'contribute/structure/engine/occurrence',
+                'contribute/structure/engine/logging',
+                'contribute/structure/engine/openapi',
               ]
             },
             {
               type: 'category',
-              label: 'a single-page-app in AWS',
+              label: 'Executor',
               items: [
-                'tutorials/create/aws/guide-1-1',
-                'tutorials/create/aws/guide-1-2',
-                'tutorials/create/aws/guide-2-1',
-                'tutorials/create/aws/guide-2-2',
+                'contribute/structure/executor/executor',
+                'contribute/structure/executor/templates',
+                'contribute/structure/executor/credentials',
+                'contribute/structure/executor/crypto',
+                'contribute/structure/executor/deployment',
+                'contribute/structure/executor/automation',
               ]
             },
             {
               type: 'category',
-              label: 'a django app in Azure',
+              label: 'Providers',
               items: [
-                'tutorials/create/azure/guide-1-1',
-                'tutorials/create/azure/guide-1-2',
-                'tutorials/create/azure/guide-2-1',
-                'tutorials/create/azure/guide-2-2',
+                'contribute/structure/providers/overview',
+                'contribute/structure/providers/shared',
+                'contribute/structure/providers/aws',
+                'contribute/structure/providers/azure',
+                'contribute/structure/providers/services',
               ]
             },
             {
               type: 'category',
-              label: 'a cloud rube-goldberg',
+              label: 'Deployment Frameworks',
               items: [
-                'tutorials/create/multi/guide-1-1'
+                'contribute/structure/df/overview',
+                'contribute/structure/df/default',
+                'contribute/structure/df/models',
+                {
+                  type: 'category',
+                  label: 'Outputs',
+                  items: [
+                    'contribute/structure/df/outputs/overview',
+                    'contribute/structure/df/outputs/default',
+                    'contribute/structure/df/outputs/contracts',
+                    'contribute/structure/df/outputs/scripts',
+                  ]
+                },
               ]
-            }
+            },
+            {
+              type: 'category',
+              label: 'Data Types',
+              items: [
+                'contribute/structure/data_types/overview',
+                'contribute/structure/data_types/blueprint',
+                'contribute/structure/data_types/command-line-options',
+                'contribute/structure/data_types/definition',
+                'contribute/structure/data_types/masterdata',
+                'contribute/structure/data_types/reference',
+                'contribute/structure/data_types/seed',
+                'contribute/structure/data_types/setting',
+                'contribute/structure/data_types/stack-output',
+              ]
+            },
           ]
         },
         {
           type: 'category',
-          label: 'Deploy',
+          label: 'Tools',
           items: [
-            'tutorials/deploy/single-deployment-unit-1-1',
-            'tutorials/deploy/all-deployment-units-1-1'
+            'contribute/tools/cli',
+            {
+              type: 'category',
+              label: 'Docker',
+              items: [
+                'contribute/tools/docker/images',
+                'contribute/tools/docker/scripts',
+              ]
+            },
+            {
+              type: 'category',
+              label: 'Site',
+              items: [
+                'contribute/tools/site/docusaurus',
+                'contribute/tools/site/documentation',
+                'contribute/tools/site/blogs-and-releases',
+                'contribute/tools/site/react-components',
+              ]
+            },
+            {
+              type: 'category',
+              label: 'Patterns',
+              items: [
+                'contribute/tools/patterns/patterns'
+              ]
+            },
+            {
+              type: 'category',
+              label: 'Jenkins',
+              items: [
+                'contribute/tools/jenkins/jenkins',
+              ]
+            },
           ]
         },
         {
           type: 'category',
-          label: 'Upgrade',
+          label: 'Contributor Reference',
           items: [
-            'tutorials/upgrade/single-deployment-unit-1-1',
-            'tutorials/upgrade/all-deployment-units-1-1'
+            'contribute/contributor_reference/definitions',
+            'contribute/contributor_reference/macros-and-functions',
+            'contribute/contributor_reference/routines',
           ]
         },
-        {
-          type: 'category',
-          label: 'Automate',
-          items: [
-            'tutorials/automate/automate-upgrades-1-1'
-          ]
-        }
-      ]
-    },
-    {
-      type: 'category',
-      label: 'Design Concepts',
-      items: [
-        'design-concepts/index',
-        'design-concepts/linking',
-      ]
-    },
-    {
-      type: 'category',
-      label: 'Contributor Guides',
-      items: [
-        'developer-guides/index',
-        'developer-guides/terminology',
-        'developer-guides/repository-index',
-        'developer-guides/container-tags',
-        'developer-guides/aws-data-pipeline',
-      ]
-    },
-    {
-      type: 'category',
-      label: 'Examples',
-      items: [
-        'examples/spa-azure',
-        'examples/django-app-aws',
-        'examples/big-data-analytics-aws'
-      ]
-    },
-    {
-      type: 'category',
-      label: 'Reference',
-      items: [
-        {
-          type: 'category',
-          label: 'CMDB',
-          items: [
-            'reference/cmdb/anatomy',
-            'reference/cmdb/schemas',
-          ]
-        },
-        {
-          type: 'link',
-          label: 'components',
-          href: '../reference',
-        }
       ]
     }
   ]

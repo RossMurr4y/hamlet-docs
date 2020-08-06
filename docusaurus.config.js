@@ -1,7 +1,7 @@
 module.exports = {
   title: 'hamlet',
   tagline: 'Opinionated, ConfigFirst DevOps for everyone.',
-  url: 'https://your-docusaurus-test-site.com',
+  url: 'https://hamlet.io',
   baseUrl: '/',
   favicon: 'img/favicon.ico',
   organizationName: 'hamlet', // Usually your GitHub org/user name.
@@ -15,7 +15,8 @@ module.exports = {
         src: 'img/icon.svg',	
       },
       links: [
-        {to: 'docs/index', label: 'docs', position: 'left'},
+        {to: 'docs/hello/welcome', label: 'docs', position: 'left'},
+        {to: 'reference', label: 'reference', position: 'left'},
         {
           label: 'releases',
           position: 'right',
@@ -34,7 +35,6 @@ module.exports = {
             }
           ]
         },
-        {to: "https://hamlet.io/docs/developer-guides/index", label: 'contribute', position: 'right'},
         {to: "https://gitter.im/hamlet-io/community", label: 'community', position: 'right'},
       ],
     },

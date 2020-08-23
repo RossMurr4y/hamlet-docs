@@ -120,6 +120,9 @@ module.exports = {
       ],
       copyright: `Built with Docusaurus.`,
     },
+    prism: {
+      theme: require("./src/theme/hamlet"),
+    }
   },
   presets: [
     [

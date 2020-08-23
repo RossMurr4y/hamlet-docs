@@ -16,6 +16,7 @@ function HamletExample({ codeblocks, labels }) {
               {...defaultProps}
               code={codeblock.value}
               language={codeblock.type}
+              theme={require("../../theme/hamlet")}
             >
               {({ className, style, tokens, getLineProps, getTokenProps }) => (
                 <pre className={className} style={style}>

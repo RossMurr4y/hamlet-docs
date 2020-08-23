@@ -19,7 +19,7 @@ The hamlet.io documentation is currently under significant re-development. Exist
 ```
 
 #### .code-workspace
-```
+```json
 // incl. workspace file that clones the repositories into the correct structure from source and into .devcontainer vol mount
 ```
 

@@ -122,6 +122,7 @@ module.exports = {
     },
     prism: {
       theme: require("./src/theme/hamlet"),
+      additionalLanguages: ['groovy']
     }
   },
   presets: [

@@ -14,7 +14,65 @@ module.exports = {
         'foundations/inputsources',
         'foundations/outputtypes',
         'foundations/links',
+        'foundations/lifecycle',
         'foundations/terminology',
+      ]
+    },
+    {
+      type: 'category',
+      label: 'Integrations',
+      items: [
+        'integrations/index',
+        {
+          type: 'category',
+          label: 'Jenkins',
+          items: [
+            'integrations/jenkins/index',
+            {
+              type: 'category',
+              label: 'Example Library',
+              items: [
+                'integrations/jenkins/examplelibrary/index',
+                'integrations/jenkins/examplelibrary/examples/properties/properties',
+                {
+                  type: 'category',
+                  label: 'Build',
+                  items: [
+                    'integrations/jenkins/examplelibrary/examples/build/single',
+                    'integrations/jenkins/examplelibrary/examples/build/multiunit',
+                  ]
+                },
+                {
+                  type: 'category',
+                  label: 'Deploy',
+                  items: [
+                    'integrations/jenkins/examplelibrary/examples/deploy/continuous-deploy',
+                    'integrations/jenkins/examplelibrary/examples/deploy/promote-release',
+                    'integrations/jenkins/examplelibrary/examples/deploy/prepare-release',
+                    'integrations/jenkins/examplelibrary/examples/deploy/deploy-release',
+                    'integrations/jenkins/examplelibrary/examples/deploy/accept-release',
+                  ]
+                },
+                {
+                  type: 'category',
+                  label: 'Manage',
+                  items: [
+                    'integrations/jenkins/examplelibrary/examples/manage/environment',
+                  ]
+                },
+                {
+                  type: 'category',
+                  label: 'Utilities',
+                  items: [
+                    'integrations/jenkins/examplelibrary/examples/utils/publish-expo-app',
+                    'integrations/jenkins/examplelibrary/examples/utils/pull-image',
+                    'integrations/jenkins/examplelibrary/examples/utils/run-task',
+                  ]
+                }
+              ]
+            }
+          ]
+        },
       ]
     },
     {

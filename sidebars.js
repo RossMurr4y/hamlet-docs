@@ -11,9 +11,17 @@ module.exports = {
       items: [
         'foundations/anatomy',
         'foundations/index',
-        'foundations/inputsources',
+        {
+          type: 'category',
+          label: 'Inputs',
+          items: [
+            'foundations/inputs/inputsources',
+            'foundations/inputs/references',
+          ]
+        },
         'foundations/outputtypes',
         'foundations/links',
+        'foundations/profiles',
         'foundations/lifecycle',
         'foundations/terminology',
       ]
@@ -157,7 +165,6 @@ module.exports = {
                 'contribute/structure/data_types/command-line-options',
                 'contribute/structure/data_types/definition',
                 'contribute/structure/data_types/masterdata',
-                'contribute/structure/data_types/reference',
                 'contribute/structure/data_types/seed',
                 'contribute/structure/data_types/setting',
                 'contribute/structure/data_types/stack-output',

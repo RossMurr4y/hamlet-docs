@@ -1,5 +1,5 @@
 ---
-sidebar_label: inputs
+sidebar_label: sources
 title: Input Sources
 ---
 import Admonition from 'react-admonitions';

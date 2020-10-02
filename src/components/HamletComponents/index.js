@@ -4,7 +4,7 @@ import YAML from "json2yaml";
 
 import "./styles.css";
 import {
-  getAsyncComponents,
+  getAsyncSchemaData,
   getAttributeStructure,
   getComponentStructure,
 } from "@site/src/components/HamletJsonSchema";
@@ -147,11 +147,11 @@ function HamletComponent(props) {
   );
 }
 
-const HamletComponents = () => {
+const HamletComponents = props => {
   const [definitions, setDefinitions] = useState({ components: [] });
 
   useEffect(() => {
-    getAsyncComponents().then((result) => {
+    getAsyncSchemaData({ type: props.type, version: props.version }).then((result) => {
       setDefinitions(result);
     });
   }, []);

@@ -1,15 +1,15 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Layout from "@theme/Layout";
 import HamletComponents from '@site/src/components/HamletComponents';
 
-const HamletComponentReference = () => {
+const HamletMetaReferenceSchema = () => {
   return (
-    <Layout id="HamletComponents">
+    <Layout id="HamletMetaReference">
       <div className="container">
         <div className="row">
           <div className="col col--1" />
           <div className="col col--10 component">
-            <HamletComponents />
+            <HamletComponents type="metaparameter" version="latest" />
           </div>
           <div className="col col--1" />
         </div>
@@ -18,4 +18,4 @@ const HamletComponentReference = () => {
   );
 };
 
-export default HamletComponentReference;
+export default HamletMetaReferenceSchema;

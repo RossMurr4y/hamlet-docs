@@ -4,54 +4,52 @@
 import axios from "axios";
 
 const schema = {
-    basePath: 'https://hamlet.io/schema',
-    reference: {
-        data: `blueprint/reference`,
-    },
-    component: {
-        data: `blueprint/component`,
-    }
+  basePath: '../schema',
+  reference: {
+      data: `blueprint/reference-schema`,
+  },
+  component: {
+      data: `blueprint/component-schema`,
+  },
+  metaparameter: {
+      data: `blueprint/metaparameter-schema`,
+  }
 };
 
-const getHamletJsonSchemaData = ({type, version}) => {
-    let path = schema[type].data;
-    return axios.get(`${schema.basePath}/${version}/${path}.json`);
+const filterSets = {
+  "component" : [
+    "DeploymentUnits",
+    "Export"
+  ]
 }
 
-const filterObjects = ["deployment-units", "instances"];
-const filterAttributerObjects = [
-  "DeploymentUnits",
-  "Instances",
-  "additionalProperties",
-];
+const getHamletJsonSchemaData = (props) => {
+  let path = schema[props.type].data;
+  return axios.get(`${schema.basePath}/${props.version}/${path}.json`);
+}
 
-const getAsyncComponents = () => {
+const getAsyncSchemaData = (props) => {
   let components = [];
-  return getHamletJsonSchemaData({ type: "component", version: "latest"}).then((response) => {
-    Object.entries(response.data.definitions).map((definition) => {
+  return getHamletJsonSchemaData({ type: props.type, version: props.version}).then((response) => {
+    Object.entries(response.data.definitions).map(definition => {
       let [name, value] = definition;
       let requiresList = value.required || [];
-      /* Filter Components */
-      if (!filterObjects.includes(name)) {
-        /* Filter Attributes */
-        let attributes = [];
-        Object.entries(value.properties).map((attr) => {
-          let [key, val] = attr;
-          if (!filterAttributerObjects.includes(key)) {
-            attributes.push({
-              name: key,
-              value: val,
-              required: requiresList.includes(key),
-            });
-          }
-          return attributes;
-        });
-
-        components.push({
-          name: name,
-          attributes: attributes,
-        });
-      }
+      let attributes = [];
+      Object.entries(value.patternProperties['^[A-Za-z_][A-Za-z0-9_]*$'].properties).map((componentAttribute) => {
+        let [attrName, attrValue] = componentAttribute;
+        if (!filterSets.component.includes(attrName)) {
+          attributes.push({
+            name: attrName,
+            value: attrValue,
+            required: requiresList.includes(attrName),
+          });
+        }
+        return attributes;
+      });
+      components.push({
+        name: name,
+        attributes: attributes,
+      });
       return components;
     });
     return { components: components };
@@ -63,7 +61,6 @@ const getAttributeStructure = (attributes) => {
   attributes.map((attribute) => {
     let result = {};
     let childAttributes = [];
-
     switch (attribute.value.type) {
       default:
       case "boolean":
@@ -85,7 +82,7 @@ const getAttributeStructure = (attributes) => {
           name: attribute.name,
           mandatory: attribute.required,
           type: attribute.value.type,
-          enum: attribute.value.items.enum,
+          enum: attribute.value.enum,
           default: attribute.value.default,
           description: attribute.value.description,
           properties: attribute.value.properties,
@@ -262,7 +259,7 @@ const getComponentExampleCodeblock = (schema) => {
 
 
 export {
-  getAsyncComponents,
+  getAsyncSchemaData,
   getAttributeStructure,
   getComponentStructure,
   getComponentExampleCodeblock,

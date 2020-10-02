@@ -16,7 +16,24 @@ module.exports = {
       },
       links: [
         {to: 'docs/hello/welcome', label: 'docs', position: 'left'},
-        {to: 'reference', label: 'reference', position: 'left'},
+        {
+          label: 'reference',
+          position: 'left',
+          items: [
+            {
+              label: 'Components',
+              to: 'reference/components',
+            },
+            {
+              label: 'Reference Data',
+              to: 'reference/data',
+            },
+            {
+              label: 'Metaparameters',
+              to: 'reference/meta',
+            },
+          ],
+        },
         {
           label: 'releases',
           position: 'right',

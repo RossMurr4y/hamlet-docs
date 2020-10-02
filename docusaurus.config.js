@@ -9,10 +9,10 @@ module.exports = {
   themeConfig: {
     disableDarkMode: true,
     navbar: {
-      title: 'hamlet',	
-      logo: {	
-        alt: 'hamlet',	
-        src: 'img/icon.svg',	
+      title: 'hamlet',
+      logo: {
+        alt: 'hamlet',
+        src: 'img/icon.svg',
       },
       links: [
         {to: 'docs/hello/welcome', label: 'docs', position: 'left'},
@@ -34,14 +34,11 @@ module.exports = {
             },
           ],
         },
+        {to: "blog", label: 'blog', position: 'right'},
         {
           label: 'releases',
           position: 'right',
           items: [
-            {
-              label: 'latest updates',
-              to: 'blog',
-            },
             {
               label: 'strategy',
               to: 'docs/releases/schedule',
@@ -92,7 +89,7 @@ module.exports = {
           title: 'Community',
           items: [
             {
-              label: 'Latest Releases',
+              label: 'Blog',
               to: 'blog',
             },
             {

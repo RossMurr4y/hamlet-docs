@@ -14,7 +14,7 @@ jobs:
 
     steps:
       - name: Checkout Docs Site
-      - uses: actions/checkout@v2
+        uses: actions/checkout@v2
       
       - name: Generate Hamlet Schemas
         run: |
@@ -29,6 +29,6 @@ jobs:
           cp ~/schema/schema-meta-schema.json docs/static/schema/latest/blueprint/metaparameter-schema.json
           
       - name: Commit Schemas into Repo
-      - uses: stefanzweifel/git-auto-commit-action@v4
+        uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: publish latest hamlet schemas.

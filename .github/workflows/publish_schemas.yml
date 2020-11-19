@@ -1,0 +1,32 @@
+name: hamlet-schema-updater
+
+on:
+  push:
+    branches:
+      - "master"
+
+jobs:
+  hamlet-schema-updater:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Generate Hamlet Schemas Inside Container
+        uses: docker://hamletio/hamlet:latest
+         - run:|
+              hamlet entrance -i mock -p aws -p awstest -p azure -p azuretest invoke-entrance -e schema -u component -o ~/schema
+              hamlet entrance -i mock -p aws -p awstest -p azure -p azuretest invoke-entrance -e schema -u reference -o ~/schema
+              hamlet entrance -i mock -p aws -p awstest -p azure -p azuretest invoke-entrance -e schema -u metaparameter -o ~/schema
+
+      - name: Copy Schemas Into Project from Container Image
+        run: |
+          CID=$(docker create hamletio/hamlet)
+          docker cp ${CID}:/home/hamlet/schema/schema-component-schema.json docs/static/schema/latest/blueprint/component-schema.json
+          docker cp ${CID}:/home/hamlet/schema/schema-reference-schema.json docs/static/schema/latest/blueprint/reference-schema.json
+          docker cp ${CID}:/home/hamlet/schema/schema-meta-schema.json docs/static/schema/latest/blueprint/metaparameter-schema.json
+          
+      - name: Commit Schemas into Repo
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: publish latest hamlet schemas.

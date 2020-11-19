@@ -11,7 +11,7 @@ jobs:
     container:
       image: hamletio/hamlet:latest
       volumes:
-        - .:/home/hamlet/www
+        - ${{ github.workspace }}:/home/hamlet/www
 
     steps:
       - name: Checkout Docs Site

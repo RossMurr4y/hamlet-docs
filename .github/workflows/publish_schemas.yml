@@ -15,6 +15,7 @@ jobs:
     steps:
       - name: Checkout Docs Site
         uses: actions/checkout@v2
+        
       
       - name: Generate Hamlet Schemas
         run: |

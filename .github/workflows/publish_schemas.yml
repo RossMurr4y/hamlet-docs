@@ -15,7 +15,7 @@ jobs:
       - name: Checkout Docs Site
         uses: actions/checkout@v2
         with:
-          token: ${{ secrets.GitHub_PAT }}
+          token: ${{ secrets.PAT }}
         
       
       - name: Generate Hamlet Schemas

@@ -18,6 +18,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           token: ${{ secrets.PAT }}
+          path: '/home/github'
       
       - name: Generate Hamlet Schemas
         run: |

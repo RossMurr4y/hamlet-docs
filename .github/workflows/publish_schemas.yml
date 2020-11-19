@@ -10,13 +10,14 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: hamletio/hamlet:latest
+      volumes:
+        - .:/home/hamlet/www
 
     steps:
       - name: Checkout Docs Site
         uses: actions/checkout@v2
         with:
           token: ${{ secrets.PAT }}
-          path: /home/hamlet/www
       
       - name: Generate Hamlet Schemas
         run: |

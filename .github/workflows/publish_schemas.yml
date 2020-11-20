@@ -16,22 +16,13 @@ jobs:
     steps:
       - name: Checkout Docs Site
         uses: actions/checkout@v2
-        with:
-          token: ${{ secrets.PAT }}
-          path: '/home/github'
       
       - name: Generate Hamlet Schemas
-        run: |
-          hamlet entrance -i mock -p aws -p awstest -p azure -p azuretest invoke-entrance -e schema -u component -o /home/hamlet/schema
-          hamlet entrance -i mock -p aws -p awstest -p azure -p azuretest invoke-entrance -e schema -u reference -o  /home/hamlet/schema
-          hamlet entrance -i mock -p aws -p awstest -p azure -p azuretest invoke-entrance -e schema -u metaparameter -o /home/hamlet/schema
+        uses: rossmurr4y/hamlet-go@v1
+        with:
+          task_build_schemas: true
+          task_build_schemas_output: /github/workspace/docs/static/schema/latest/blueprint
 
-      - name: Copy Schemas Into Docs Site
-        run: |
-          cp ~/schema/schema-component-schema.json /home/hamlet/www/docs/static/schema/latest/blueprint/component-schema.json
-          cp ~/schema/schema-reference-schema.json /home/hamlet/www/docs/static/schema/latest/blueprint/reference-schema.json
-          cp ~/schema/schema-meta-schema.json /home/hamlet/www/docs/static/schema/latest/blueprint/metaparameter-schema.json
-          
       - name: Commit Schemas into Repo
         uses: stefanzweifel/git-auto-commit-action@v4
         with:

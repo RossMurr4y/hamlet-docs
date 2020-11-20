@@ -8,10 +8,6 @@ on:
 jobs:
   hamlet-schema-updater:
     runs-on: ubuntu-latest
-    container:
-      image: hamletio/hamlet:latest
-      volumes:
-        - ${{ github.workspace }}:/home/hamlet/www
 
     steps:
       - name: Checkout Docs Site

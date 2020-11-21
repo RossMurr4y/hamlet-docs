@@ -17,7 +17,7 @@ jobs:
         uses: rossmurr4y/hamlet-go@v1
         with:
           task_build_schemas: true
-          task_build_schemas_output: ${{ github.workspace + '/static/schema/latest/blueprint' }}
+          task_build_schemas_output: ${{ github.workspace }}/static/schema/latest/blueprint
 
       - name: Commit Schemas into Repo
         uses: stefanzweifel/git-auto-commit-action@v4

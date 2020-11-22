@@ -22,4 +22,5 @@ jobs:
       - name: Commit Schemas into Repo
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
+          repository: ${{ github.workspace }}
           commit_message: publish latest hamlet schemas.
